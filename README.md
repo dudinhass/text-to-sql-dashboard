@@ -7,7 +7,9 @@
 ![LangChain](https://img.shields.io/badge/LangChain-Groq_Llama_3.3-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white)
 
 <div align="center">
-  <video src="demo.mp4" width="100%" height="auto" autoplay loop muted></video>
+  
+![Demonstração do Projeto](demo.mp4)
+
 </div>
 
 ---
