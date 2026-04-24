@@ -7,9 +7,7 @@
 ![LangChain](https://img.shields.io/badge/LangChain-Groq_Llama_3.3-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white)
 
 <div align="center">
-  
-![Demonstração do Projeto](demo.mp4)
-
+  <video src="https://github.com/dudinhass/text-to-sql-dashboard/raw/main/demo.mp4" width="100%" height="auto" autoplay loop muted></video>
 </div>
 
 ---
