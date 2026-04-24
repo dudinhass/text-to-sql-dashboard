@@ -1,0 +1,19 @@
+# Ambiente virtual
+venv/
+.venv/
+
+# Variáveis de ambiente (NUNCA comitar credenciais!)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

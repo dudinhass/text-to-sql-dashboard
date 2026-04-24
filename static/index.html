@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Crisis Data Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for premium icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar bento-card">
+            <div class="logo-area">
+                <i class="ph-fill ph-globe-hemisphere-west"></i>
+                <h2>Data Assistant</h2>
+            </div>
+            
+            <div class="model-selector">
+                <label for="ai-model">Modelo de IA</label>
+                <div class="select-wrapper">
+                    <select id="ai-model">
+                        <option value="llama3-70b">Llama 3 70B (Groq)</option>
+                        <option value="gpt4o">GPT-4o</option>
+                        <option value="claude3">Claude 3 Opus</option>
+                    </select>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="ph ph-squares-four"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i> Histórico</a>
+                <a href="#" class="nav-item"><i class="ph ph-gear"></i> Configurações</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Visão Global & Insights</h1>
+                <p>Faça perguntas em linguagem natural sobre o cenário macroeconômico.</p>
+            </header>
+
+            <!-- Hero Metrics -->
+            <section class="hero-metrics">
+                <div class="metric-card bento-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Petróleo Brent</span>
+                        <i class="ph-fill ph-drop"></i>
+                    </div>
+                    <div class="metric-value">$ 82.45</div>
+                    <div class="metric-trend positive"><i class="ph ph-trend-up"></i> +1.2%</div>
+                </div>
+
+                <div class="metric-card bento-card">
+                    <div class="metric-header">
+                        <span class="metric-title">S&P 500</span>
+                        <i class="ph-fill ph-chart-line-up"></i>
+                    </div>
+                    <div class="metric-value">5,123.40</div>
+                    <div class="metric-trend positive"><i class="ph ph-trend-up"></i> +0.8%</div>
+                </div>
+
+                <div class="metric-card bento-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Sentimento Global</span>
+                        <i class="ph-fill ph-brain"></i>
+                    </div>
+                    <div class="metric-value">Tensão Alta</div>
+                    <div class="metric-trend negative"><i class="ph ph-warning-circle"></i> Foco no O. Médio</div>
+                </div>
+            </section>
+
+            <!-- Chat Area -->
+            <section class="chat-area bento-card">
+                <form id="chat-form" class="chat-form">
+                    <div class="input-wrapper">
+                        <i class="ph ph-sparkle spark-icon"></i>
+                        <input type="text" id="chat-input" placeholder="Ex: Como o sentimento das notícias afetou o barril de petróleo?" autocomplete="off" required>
+                        <button type="submit" class="submit-btn">
+                            <i class="ph ph-paper-plane-right"></i>
+                            <span>Analisar</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Suggestion Chips -->
+                <div class="suggestion-chips">
+                    <button class="chip" type="button">Variação do Petróleo Brent?</button>
+                    <button class="chip" type="button">Sentimento afetou o Diesel?</button>
+                    <button class="chip" type="button">Correlação S&P 500 e Frete?</button>
+                    <button class="chip" type="button">Média do Dólar no período?</button>
+                </div>
+            </section>
+
+            <!-- Results Area -->
+            <section id="results-area" class="results-area bento-card hidden">
+                <div class="results-header">
+                    <h3>Resultados da Análise</h3>
+                    <div class="header-actions">
+                        <button class="action-btn" id="copy-sql-btn"><i class="ph ph-copy"></i> Copiar SQL</button>
+                        <button class="action-btn"><i class="ph ph-download-simple"></i> Baixar CSV</button>
+                        <span class="badge">Llama 3.3 70B</span>
+                    </div>
+                </div>
+                
+                <div id="loading-state" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <p id="loading-text">Analisando sua pergunta...</p>
+                </div>
+
+                <div id="results-content" class="results-content hidden">
+                
+                <div class="analysis-answer" id="analysis-answer">
+                    <!-- Resposta textual da IA será injetada aqui -->
+                    Aguardando análise...
+                </div>
+                
+                <details class="sql-container">
+                    <summary class="sql-header">
+                        <div class="summary-title">
+                            <i class="ph ph-code"></i>
+                            <span>Ver Query SQL Gerada</span>
+                        </div>
+                        <i class="ph ph-caret-down caret-icon"></i>
+                    </summary>
+                    <div class="sql-content">
+                        <div class="sql-actions">
+                            <button class="copy-btn"><i class="ph ph-copy"></i> Copiar</button>
+                        </div>
+                        <pre><code id="sql-code">-- Aguardando consulta...</code></pre>
+                    </div>
+                </details>
+
+                <div class="chart-container" style="position: relative; height:300px; width:100%; margin-top: 20px;">
+                    <canvas id="resultsChart"></canvas>
+                </div>
+                
+                </div> <!-- End results-content -->
+            </section>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

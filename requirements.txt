@@ -1,0 +1,11 @@
+pandas
+sqlalchemy
+psycopg2-binary
+python-dotenv
+langchain
+langchain-groq
+langchain-community
+fastapi
+uvicorn
+pydantic
+streamlit
